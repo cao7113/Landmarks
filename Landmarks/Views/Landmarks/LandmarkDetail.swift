@@ -8,24 +8,38 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    @Environment(ModelData.self) var modelData
     var landmark: Landmark
     
+    
+    
+    var landmarkIndex: Int {
+        modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
+    }
+    
     var body: some View {
-//        VStack {
+        @Bindable var modelData = modelData
+        
+        // VStack {
         ScrollView {
             // map view
             MapView(coordinate: landmark.locationCoordinate)
-              .frame(height: 300)
+                .frame(height: 300)
             
             // image
             CircleImage(image: landmark.image)
                 .offset(y: -130)
-                               .padding(.bottom, -130)
+                .padding(.bottom, -130)
             // info
             VStack(alignment: .leading) {
                 // name view of landmark
-                Text(landmark.name)
-                    .font(.title)
+                
+                HStack {
+                    Text(landmark.name)
+                        .font(.title)
+                    FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavorite)
+                }
+                
                 // location view of landmark
                 HStack {
                     // park
@@ -43,20 +57,22 @@ struct LandmarkDetail: View {
                 
                 
                 Divider()
-
-
+                
+                
                 Text("About \(landmark.name)")
                     .font(.title2)
                 Text(landmark.description)
             }.padding()
             
-//            Spacer()
+            // Spacer()
         }
         .navigationTitle(landmark.name)
-                .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    LandmarkDetail(landmark: landmarks[0])
+    let modelData = ModelData()
+    return LandmarkDetail(landmark: modelData.landmarks[0])
+        .environment(modelData)
 }
