@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		30886F742D5AE0DA00A63267 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 30886F732D5AE0CB00A63267 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		30886F572D5AD8A200A63267 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		30886F462D5AD89F00A63267 /* Landmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30886F562D5AD8A200A63267 /* LandmarksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandmarksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30886F602D5AD8A200A63267 /* LandmarksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandmarksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30886F732D5AE0CB00A63267 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		30886F3D2D5AD89F00A63267 = {
 			isa = PBXGroup;
 			children = (
+				30886F732D5AE0CB00A63267 /* README.md */,
 				30886F482D5AD89F00A63267 /* Landmarks */,
 				30886F592D5AD8A200A63267 /* LandmarksTests */,
 				30886F632D5AD8A200A63267 /* LandmarksUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30886F742D5AE0DA00A63267 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
