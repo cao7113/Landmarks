@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  LandmarkDetail.swift
 //  Landmarks
 //
 //  Created by ftrj on 2025/2/11.
@@ -7,31 +7,35 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LandmarkDetail: View {
+    var landmark: Landmark
+    
     var body: some View {
-        VStack {
+//        VStack {
+        ScrollView {
             // map view
-            MapView()
+            MapView(coordinate: landmark.locationCoordinate)
               .frame(height: 300)
+            
             // image
-            CircleImage()
+            CircleImage(image: landmark.image)
                 .offset(y: -130)
                                .padding(.bottom, -130)
             // info
             VStack(alignment: .leading) {
                 // name view of landmark
-                Text("Turtle Rock")
+                Text(landmark.name)
                     .font(.title)
                 // location view of landmark
                 HStack {
                     // park
-                    Text("Joshua Tree National Park")
+                    Text(landmark.park)
                     
                     // expand to parent's full width
                     Spacer()
                     
                     // state
-                    Text("California")
+                    Text(landmark.state)
                     
                 } .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -41,17 +45,18 @@ struct ContentView: View {
                 Divider()
 
 
-                Text("About Turtle Rock")
+                Text("About \(landmark.name)")
                     .font(.title2)
-                Text("Descriptive text goes here.")
+                Text(landmark.description)
             }.padding()
             
-            Spacer()
+//            Spacer()
         }
-            
+        .navigationTitle(landmark.name)
+                .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    ContentView()
+    LandmarkDetail(landmark: landmarks[0])
 }
