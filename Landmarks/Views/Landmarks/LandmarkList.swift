@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct LandmarkList: View {
+    // 环境（Environment）属性包装器，将视图环境中共享的 ModelData 实例注入到局部变量 modelData 中。
     @Environment(ModelData.self) var modelData
     @State private var showFavoritesOnly = false
-    
+
     var filteredLandmarks: [Landmark] {
         modelData.landmarks.filter { landmark in
             (!showFavoritesOnly || landmark.isFavorite)
         }
     }
-    
+
     var body: some View {
         NavigationSplitView {
             List {
                 Toggle(isOn: $showFavoritesOnly) {
-                           Text("Favorites only")
-                       }
-                
+                    Text("Favorites only")
+                }
+
                 ForEach(filteredLandmarks) { landmark in
                     NavigationLink {
                         LandmarkDetail(landmark: landmark)
@@ -37,21 +38,21 @@ struct LandmarkList: View {
         } detail: {
             Text("Select a Landmark")
         }
-        
+
         // Version 4
-        
+
         //        LandmarkRow(landmark: landmark)
-        
+
         // Version 3
         //        List(landmarks) { landmark in
         //             LandmarkRow(landmark: landmark)
         //         }
-        
+
         // Version 2
         //        List(landmarks, id: \.id) { landmark in
         //            LandmarkRow(landmark: landmark)
         //        }
-        
+
         // Version 1
         //        List {
         //            LandmarkRow(landmark: landmarks[0])
